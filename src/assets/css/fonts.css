@@ -1,0 +1,234 @@
+@font-face {
+    font-family: SVN-Gotham;
+    src: url("../fonts/SVN-Gotham-Regular.woff");
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?acebfm');
+    src:  url('../fonts/icomoon.eot?acebfm#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?acebfm') format('truetype'),
+      url('../fonts/icomoon.woff?acebfm') format('woff'),
+      url('../fonts/icomoon.svg?acebfm#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    font-feature-settings: "liga";
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    font-variant-ligatures: discretionary-ligatures;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-about:before {
+    content: "\e900";
+    color: #8493a8;
+  }
+  .icon-account:before {
+    content: "\e901";
+    color: #54657e;
+  }
+  .icon-add-blog:before {
+    content: "\e904";
+    color: #54657e;
+  }
+  .icon-add-element:before {
+    content: "\e905";
+    color: #54657e;
+  }
+  .icon-add-media:before {
+    content: "\e906";
+    color: #54657e;
+  }
+  .icon-add-page:before {
+    content: "\e907";
+    color: #54657e;
+  }
+  .icon-add-website:before {
+    content: "\e908";
+    color: #8493a8;
+  }
+  .icon-align-bottom:before {
+    content: "\e909";
+    color: #8493a8;
+  }
+  .icon-align-center:before {
+    content: "\e90a";
+    color: #8493a8;
+  }
+  .icon-align-left:before {
+    content: "\e90b";
+    color: #8493a8;
+  }
+  .icon-align-right:before {
+    content: "\e90c";
+    color: #8493a8;
+  }
+  .icon-align-top:before {
+    content: "\e90d";
+    color: #8493a8;
+  }
+  .icon-align-vertical-center:before {
+    content: "\e90e";
+    color: #8493a8;
+  }
+  .icon-arrow-down:before {
+    content: "\e90f";
+    color: #54657e;
+  }
+  .icon-arrow-next:before {
+    content: "\e910";
+    color: #54657e;
+  }
+  .icon-arrow-right:before {
+    content: "\e911";
+    color: #fff;
+  }
+  .icon-bell:before {
+    content: "\e912";
+    color: #8493a8;
+  }
+  .icon-close:before {
+    content: "\e913";
+    color: #8493a8;
+  }
+  .icon-copy .path1:before {
+    content: "\e914";
+    color: rgb(132, 147, 168);
+  }
+  .icon-copy .path2:before {
+    content: "\e915";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .icon-delete .path1:before {
+    content: "\e917";
+    color: rgb(132, 147, 168);
+  }
+  .icon-delete .path2:before {
+    content: "\e918";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .icon-delete .path3:before {
+    content: "\e919";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .icon-delete .path4:before {
+    content: "\e91a";
+    margin-left: -1em;
+    color: rgb(132, 147, 168);
+  }
+  .icon-desktop:before {
+    content: "\e91b";
+    color: #8493a8;
+  }
+  .icon-drag-area:before {
+    content: "\e91c";
+    color: #8493a8;
+  }
+  .icon-duplicate .path1:before {
+    content: "\e91d";
+    color: rgb(132, 147, 168);
+  }
+  .icon-duplicate .path2:before {
+    content: "\e91e";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .icon-duplicate .path3:before {
+    content: "\e91f";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .icon-eye:before {
+    content: "\e920";
+    color: #8493a8;
+  }
+  .icon-folder:before {
+    content: "\e921";
+    color: #eb6641;
+  }
+  .icon-help:before {
+    content: "\e922";
+    color: #8493a8;
+  }
+  .icon-home:before {
+    content: "\e923";
+    color: #8493a8;
+  }
+  .icon-link:before {
+    content: "\e924";
+    color: #eb6641;
+  }
+  .icon-logout:before {
+    content: "\e925";
+    color: #54657e;
+  }
+  .icon-mobile:before {
+    content: "\e926";
+    color: #8493a8;
+  }
+  .icon-mouse:before {
+    content: "\e927";
+    color: #eb6641;
+  }
+  .icon-notifitation:before {
+    content: "\e928";
+    color: #8493a8;
+  }
+  .icon-paste:before {
+    content: "\e929";
+    color: #8493a8;
+  }
+  .icon-redo:before {
+    content: "\e92a";
+    color: #8493a8;
+  }
+  .icon-search:before {
+    content: "\e92b";
+    color: #8493a8;
+  }
+  .icon-setting:before {
+    content: "\e92c";
+    color: #ebedf3;
+  }
+  .icon-social:before {
+    content: "\e92d";
+    color: #8493a8;
+  }
+  .icon-tick:before {
+    content: "\e92e";
+    color: #eb6641;
+  }
+  .icon-undo:before {
+    content: "\e92f";
+    color: #8493a8;
+  }
+  .icon-add-background:before {
+    content: "\ea53";
+  }
+  .icon-add-application:before {
+    content: "\ea59";
+  }
+  

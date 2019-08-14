@@ -1,0 +1,92 @@
+{
+    "page":[
+        {
+            "_title" : "Menu & Page"
+        }
+    ],
+    "background":[
+        {
+            "_title": "Background"
+        }
+    ],
+    "add":[
+        {
+            "_title" : "Section",
+            "_list":[
+                {
+                    "_name" : "Section classic",
+                    "_ref":"section_classic"
+                }
+            ]
+        },
+        {
+            "_title":"Text",
+            "_list":[
+                {
+                    "_name": "Paragraph",
+                    "_ref":"paragraph"
+                }
+            ]
+        },
+        {
+            "_title":"Image",
+            "_list":[
+                {
+                    "_name":"Image",
+                    "_ref":"image"
+                }
+            ]
+        },
+        {
+            "_title":"Button",
+            "_list":[
+                {
+                    "_name":"Button classic",
+                    "_ref":"button_classic"
+                }
+            ]
+        },
+        {
+            "_title":"Video",
+            "_list":[
+                {
+                    "_name":"Youtube",
+                    "_ref":"video_youtube"
+                }
+            ]
+        }
+    ],
+    "application":[
+        {
+            "_title":"Application",
+            "_list":[
+                {
+                    "_name":"",
+                    "_ref":""
+                }
+            ]
+        }
+    ],
+    "media":[
+        {
+            "_title":"Media",
+            "_list":[
+                {
+                    "_name":"",
+                    "_ref":""
+                }
+            ]
+        }
+    ],
+    "blog":[
+        {
+            "_title":"Blog",
+            "_list":[
+                {
+                    "_name":"",
+                    "_ref":""
+                }
+            ]
+        }
+    ]
+}
