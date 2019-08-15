@@ -7,7 +7,7 @@
         :w="100"
         :angle="0"
     >
-        <span>{{_active}}</span>
+        <span>{{active}}</span>
     </drr>
 </template>
 
@@ -29,8 +29,8 @@ import elementMixin from '../mixins/element-mixin'
             
         },
         computed:{
-            _active(){
-                return this.$data._isActive
+            active(){
+                return this.isActive
             }
         }
        

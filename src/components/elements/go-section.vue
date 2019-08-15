@@ -1,21 +1,26 @@
 <template>
     <div class="container-fluid"
-        :class="{active_editor:$data._isActive}"
-        :style="_style"
+        :class="{active_editor:isActive}"
+        :style="style"
         v-closable="{
-            handler: '_clickOutsideSection',
+            handler: 'clickOutsideSection',
             exclude: []
         }"
     >
-        <go-row v-for="row in $data._row" :key="row._index_row" :properties="row" :h="_getStyle.height">
-            <go-column v-for="column in $data._column.filter(item => item._row_index == row._index_row)" :key="column._index_column" :properties="column"></go-column>
+        <go-row v-for="row in row" :key="row.indexRow" :properties="{row,section: properties.id}" :h="getStyle.height">
+            <go-column v-for="column in column.filter(item => item.rowIndex == row.indexRow)" :key="column.indexColumn" :properties="{column,section:properties.id}"></go-column>
         </go-row>
-        <go-editor-element-tool></go-editor-element-tool>
+        <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :name="name"></go-editor-element-tool>
+        <!-- <go-editor-element-setting :type="name"></go-editor-element-setting> -->
     </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
+const module_status = createNamespacedHelpers('status')
     export default {
+        
         props:{
             properties:{
                 type: Object,
@@ -26,49 +31,64 @@
             }
         },
         data:()=>({
-           _isActive:false,
-           _row :[],
-           _column :[]
+           isActive:false,
+           row :[],
+           column :[],
+           name:'Section',
+           styleBtnTool:{
+                right: '10px',
+                bottom: '0'
+           }
         }),
         methods:{
             
-            _clickOutsideSection(){
-                this.$data._isActive =false
+            clickOutsideSection(){
+                this.isActive =false
             },
-            _getProperties(){
+            getProperties(){
                 return this.properties
             },
-            _reset_row_column(){
-                this.$data._row = []
-                this.$data._column = []
+            resetRowColumn(){
+                this.row = []
+                this.column = []
             }
         },
         computed:{
-            _getStyle(){
+            getStyle(){
                 return this.properties.attributes.style
             },
-            _style(){
+            style(){
                 return {
-                    backgroundColor: this._getStyle.backgroundColor,
-                    boxShadow: this._getStyle.boxShadow,
-                    margin: this._getStyle.margin,
-                    height : this._getStyle.height +'px',
+                    backgroundColor: this.getStyle.backgroundColor,
+                    boxShadow: this.getStyle.boxShadow,
+                    margin: this.getStyle.margin,
+                    height : this.getStyle.height +'px',
                     position:'relative'
                 }
-            }
+            },
+            ...module_status.mapGetters([
+                'getSectionIdSelected'
+            ])
         },
         watch:{
-            _getProperties(val){
-                this._reset_row_column()
-                this.$data._row = val.attributes.rows
-                this.$data._column = val.attributes.columns
+            getProperties(val){
+                this.resetRowColumn()
+                this.row = val.attributes.rows
+                this.column = val.attributes.columns
             },
+            getSectionIdSelected(val){
+                if(val === this.properties.id){
+                    this.isActive = true
+                }else{
+                    this.isActive = false
+                }
+            }
             
         },
         mounted(){
-            this._reset_row_column()
-            this.$data._row = this.properties.attributes.rows
-            this.$data._column = this.properties.attributes.columns
+            this.resetRowColumn()
+            this.row = this.properties.attributes.rows
+            this.column = this.properties.attributes.columns
         }
         
     }

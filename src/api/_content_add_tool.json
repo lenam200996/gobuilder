@@ -1,36 +1,36 @@
 {
     "page":[
         {
-            "_title" : "Menu & Page"
+            "title" : "Menu & Page"
         }
     ],
     "background":[
         {
-            "_title": "Background"
+            "title": "Background"
         }
     ],
     "add":[
         {
-            "_title" : "Section",
-            "_list":[
+            "title" : "Section",
+            "list":[
                 {
-                    "_name" : "Section classic",
-                    "_ref":"section_classic"
+                    "name" : "Section classic",
+                    "ref":"section_classic"
                 }
             ]
         },
         {
-            "_title":"Text",
-            "_list":[
+            "title":"Text",
+            "list":[
                 {
-                    "_name": "Paragraph",
-                    "_ref":"paragraph"
+                    "name": "Paragraph",
+                    "ref":"paragraph"
                 }
             ]
         },
         {
-            "_title":"Image",
-            "_list":[
+            "title":"Image",
+            "list":[
                 {
                     "_name":"Image",
                     "_ref":"image"
@@ -38,53 +38,53 @@
             ]
         },
         {
-            "_title":"Button",
-            "_list":[
+            "title":"Button",
+            "list":[
                 {
-                    "_name":"Button classic",
-                    "_ref":"button_classic"
+                    "name":"Button classic",
+                    "ref":"button_classic"
                 }
             ]
         },
         {
-            "_title":"Video",
-            "_list":[
+            "title":"Video",
+            "list":[
                 {
-                    "_name":"Youtube",
-                    "_ref":"video_youtube"
+                    "name":"Youtube",
+                    "ref":"video_youtube"
                 }
             ]
         }
     ],
     "application":[
         {
-            "_title":"Application",
-            "_list":[
+            "title":"Application",
+            "list":[
                 {
-                    "_name":"",
-                    "_ref":""
+                    "name":"",
+                    "ref":""
                 }
             ]
         }
     ],
     "media":[
         {
-            "_title":"Media",
-            "_list":[
+            "title":"Media",
+            "list":[
                 {
-                    "_name":"",
-                    "_ref":""
+                    "name":"",
+                    "ref":""
                 }
             ]
         }
     ],
     "blog":[
         {
-            "_title":"Blog",
-            "_list":[
+            "title":"Blog",
+            "list":[
                 {
-                    "_name":"",
-                    "_ref":""
+                    "name":"",
+                    "ref":""
                 }
             ]
         }

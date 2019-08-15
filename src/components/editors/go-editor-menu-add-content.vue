@@ -2,16 +2,16 @@
     <div class="wrap-menu-add-content-editor">
         <div class="wrap-content-list-editor">
             <ul>
-                <li v-for="item in _getContentList" @click="_setContent(item._title)" :key="item.title" :class="{active : $data._title == item._title}">{{item._title}}</li>
+                <li v-for="item in getContentList" @click="setContent(item.title)" :key="item.title" :class="{active : title == item.title}">{{item.title}}</li>
             </ul>
         </div>
         <div class="wrap-content">
-            <h2>{{_getType}}
+            <h2>{{getType}}
                 <span class="icon-help"></span>
-                <span class="icon-close" @click="_closeContent"></span>
+                <span class="icon-close" @click="closeContent"></span>
             </h2>
             <ul>
-                <li v-for="item in _getContentItem" :key="item._name" @click="_add_item_action({type : item._ref})">{{item._name}}</li>
+                <li v-for="item in getContentItem" :key="item.name" @click="addItemAction({type : item.ref})">{{item.name}}</li>
             </ul>
         </div>
     </div>
@@ -35,34 +35,34 @@ const moduleGrid = createNamespacedHelpers('grid')
             }
         },
         data:()=>({
-            _title : 'Text',
+            title : 'Text',
 
         }),
         methods:{
-            _setContent(title){
-                this.$data._title = title
+            setContent(titleContent){
+                this.title = titleContent
             },
-            _closeContent(){
-                bus.$emit('_closeContent',true)
+            closeContent(){
+                bus.$emit('closeContent',true)
             },
             ...moduleGrid.mapActions([
-                '_add_item_action'
+                'addItemAction'
             ])
            
         },
         computed:{
-            _getType(){
+            getType(){
                 return this.type
             },
-            _getContentList(){
-                return content[this._getType]
+            getContentList(){
+                return content[this.getType]
             },
-            _getContentItem(){
+            getContentItem(){
                 var item = null
                 var nohavelist = ["page","background"]
-                if(!nohavelist.includes(this._getType))
+                if(!nohavelist.includes(this.getType))
                 {
-                    item =  content[this._getType].find(item => item._title == this.$data._title)._list
+                    item =  content[this.getType].find(item => item.title == this.title).list
                 }else{
                     item = []
                 }
@@ -70,11 +70,11 @@ const moduleGrid = createNamespacedHelpers('grid')
             }
         },
         created(){
-            this.$data._title = this._getContentList[0]._title
+            this.title = this.getContentList[0].title
         },
         watch:{
-            _getType(val){
-                this.$data._title = this._getContentList[0]._title
+            getType(val){
+                this.title = this.getContentList[0].title
             }
         }
 

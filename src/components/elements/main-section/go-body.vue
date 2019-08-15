@@ -1,6 +1,6 @@
 <template>
     <section class="container-fluid" :style="style">
-        <go-section v-for="section in _getGrids" :key="section._id" :properties="section"></go-section>
+        <go-section v-for="section in getGrids" :key="section.id" :properties="section"></go-section>
     </section>
 </template>
 
@@ -18,7 +18,7 @@ const module_grids = createNamespacedHelpers('grid')
         }),
         computed:{
             ...module_grids.mapGetters([
-                '_getGrids'
+                'getGrids'
             ])
         }
     }

@@ -1,6 +1,6 @@
 var mixin =  {
     data:()=>({
-        _isActive: false
+        isActive: false
     })
 }
 

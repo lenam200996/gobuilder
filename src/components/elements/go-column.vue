@@ -1,15 +1,20 @@
 <template>
-    <div class="md-layout-item" ref="column" :class="{active_editor:$data._isActive}"
-    @click="_clickColumn"
+    <div class="md-layout-item" ref="column" :class="{active_editor:isActive}"
+    @click="clickColumn"
     v-closable="{
-        handler: '_clickOutsideColumn',
+        handler: 'clickOutsideColumn',
         exclude: []
     }"
     >
         <!-- element-->
+    <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :name="name"></go-editor-element-tool>
+    <!-- <go-editor-element-setting :type="name"></go-editor-element-setting> -->
     </div>
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
+const module_status = createNamespacedHelpers('status')
     export default {
         props:{
             properties:{
@@ -21,26 +26,50 @@
             }
         },
         data:()=>({
-            _class_reponsive:'',
-            _isActive:false
+            classReponsive:'',
+            isActive:false,
+            styleBtnTool:{
+                top:'0px',
+                right:'10px',
+            },
+            name:'Column'
         }),
         methods:{
-            _clickColumn(){
-                this.$data._isActive = true
+            clickColumn(){
+                this.isActive = true
+                this.setSectionIdSelectedAction({id:this.getSection})
+                this.setRowIndexSelectedAction({index:this.getRow})
+                this.setColumnIndexSelectedAction({index:this.getColumn})
             },
-            _clickOutsideColumn(){
-                this.$data._isActive = false
-            }
+            clickOutsideColumn(){
+                this.isActive = false
+            },
+            ...module_status.mapActions([
+                'setSectionIdSelectedAction',
+                'setRowIndexSelectedAction',
+                'setColumnIndexSelectedAction'
+            ])
         },
         computed:{
-            _size(){
-                return this.properties._size_column
+            size(){
+                return this.properties.column.sizeColumn
             },
-            
+            getRow(){
+                return this.properties.column.rowIndex
+            },
+            getSection(){
+                return this.properties.section
+            },
+            getColumn(){
+                return this.properties.column.indexColumn
+            },
+            ...module_status.mapGetters([
+
+            ])
         },
         mounted(){
-            this.$data._class_reponsive+= 'md-large-size-'+this._size
-            this.$refs.column.classList.add(this.$data._class_reponsive)
+            this.classReponsive+= 'md-large-size-'+this.size
+            this.$refs.column.classList.add(this.classReponsive)
         }
     }
 </script>

@@ -293,23 +293,23 @@ class Section {
             height : 500
         }
         this.setting={
-            _stretched :'container-fluid',
+            stretched :'container-fluid',
         },
         this.rows = [
             {
-                _index_row : 1,
-                _size_row: 100,
-                _bg_row : '#e0e0e0'
+                indexRow : 1,
+                sizeRow: 100,
+                bgRow : '#e0e0e0'
             }
         ],
         this.columns=[
             {
-                _row_index : 1,
-                _index_column: 1,
-                _size_column : 100,
-                _bg_column: 'none',
-                _bg_position : 'center',
-                _bg_size: 'auto'
+                rowIndex : 1,
+                indexColumn: 1,
+                sizeColumn : 100,
+                bgColumn: 'none',
+                bgPosition : 'center',
+                bgSize: 'auto'
             },
            
         ]
