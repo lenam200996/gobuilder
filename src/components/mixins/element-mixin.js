@@ -1,7 +1,13 @@
 var mixin =  {
     data:()=>({
-        isActive: false
-    })
+        isActive: false,
+    }),
+    methods: {
+        
+    },
+    mounted() {
+       
+    },
 }
 
 export default {mixin}

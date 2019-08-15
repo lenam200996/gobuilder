@@ -7,6 +7,7 @@ import store from "./store/index";
 */
 require('./components/elements')
 require('./components/editors')
+require('./components/editors/editor-item')
 require('./components/options')
 require('./components/render-elements')
 require('./components/elements/main-section')

@@ -1,19 +1,16 @@
 <template>
     <div class="md-layout row" :style="getStyle"
     :class="{active_editor:isActive}"
-    v-closable="{
-        handler: 'clickOutsideRow',
-        exclude: []
-    }"
+   
     >
         <slot></slot>
-    <go-editor-element-tool  v-if="isActive" :styleBlock="styleBtnTool" :name="name"></go-editor-element-tool>
-    <!-- <go-editor-element-setting :type="name"></go-editor-element-setting> -->
+    <go-editor-element-tool  v-if="isActive" :styleBlock="styleBtnTool" :thisElement="getThis"></go-editor-element-tool>
     </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
+import {bus} from '../../main.js'
 
 const module_status = createNamespacedHelpers('status')
     export default {
@@ -65,7 +62,12 @@ const module_status = createNamespacedHelpers('status')
             },
             ...module_status.mapGetters([
                 'getRowIndexSelected','getSectionIdSelected'
-            ])
+            ]),
+            getThis(){
+                return {
+                    name:this.name,id:this.properties.section,row:this.properties.row.indexRow,column: null
+                }
+            }
         },
         watch:{
             getRowIndexSelected(val){
@@ -75,6 +77,9 @@ const module_status = createNamespacedHelpers('status')
                     this.isActive = false
                 }
             }
+        },
+        mounted(){
+           
         }
     }
 </script>

@@ -1,0 +1,16 @@
+{
+    "Section":[
+        {
+            "ref" : "height"
+        },
+        {
+            "ref": "stretched"
+        },
+       {
+           "ref":"rowManager"
+       },
+       {
+           "ref":"sectionGrid"
+       }   
+    ]
+}

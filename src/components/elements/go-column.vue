@@ -7,14 +7,16 @@
     }"
     >
         <!-- element-->
-    <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :name="name"></go-editor-element-tool>
-    <!-- <go-editor-element-setting :type="name"></go-editor-element-setting> -->
+        <go-text v-for="text in getElements.filter(item => item.type=='paragraph' && item.section == properties.section && item.row == properties.column.indexRow && item.column == properties.column.indexColumn)" :key="text.id"></go-text>
+        <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :thisElement="getThis"></go-editor-element-tool>
     </div>
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
+import {bus} from '../../main.js'
 
 const module_status = createNamespacedHelpers('status')
+const module_grid = createNamespacedHelpers('grid')
     export default {
         props:{
             properties:{
@@ -55,7 +57,7 @@ const module_status = createNamespacedHelpers('status')
                 return this.properties.column.sizeColumn
             },
             getRow(){
-                return this.properties.column.rowIndex
+                return this.properties.column.indexRow
             },
             getSection(){
                 return this.properties.section
@@ -63,13 +65,19 @@ const module_status = createNamespacedHelpers('status')
             getColumn(){
                 return this.properties.column.indexColumn
             },
-            ...module_status.mapGetters([
-
+             getThis(){
+                return {
+                   name:this.name,id:this.properties.section,row:this.properties.column.indexRow,column: this.properties.column.indexColumn
+                }
+            },
+            ...module_grid.mapGetters([
+                'getElements'
             ])
         },
         mounted(){
             this.classReponsive+= 'md-large-size-'+this.size
             this.$refs.column.classList.add(this.classReponsive)
+            
         }
     }
 </script>

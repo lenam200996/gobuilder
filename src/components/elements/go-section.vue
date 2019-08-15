@@ -2,25 +2,19 @@
     <div class="container-fluid"
         :class="{active_editor:isActive}"
         :style="style"
-        v-closable="{
-            handler: 'clickOutsideSection',
-            exclude: []
-        }"
     >
         <go-row v-for="row in row" :key="row.indexRow" :properties="{row,section: properties.id}" :h="getStyle.height">
-            <go-column v-for="column in column.filter(item => item.rowIndex == row.indexRow)" :key="column.indexColumn" :properties="{column,section:properties.id}"></go-column>
+            <go-column v-for="column in column.filter(item => item.indexRow == row.indexRow)" :key="column.indexColumn" :properties="{column,section:properties.id}"></go-column>
         </go-row>
-        <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :name="name"></go-editor-element-tool>
-        <!-- <go-editor-element-setting :type="name"></go-editor-element-setting> -->
+        <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :thisElement="getThis"></go-editor-element-tool>
     </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-
+import {bus} from '../../main.js'
 const module_status = createNamespacedHelpers('status')
     export default {
-        
         props:{
             properties:{
                 type: Object,
@@ -31,17 +25,16 @@ const module_status = createNamespacedHelpers('status')
             }
         },
         data:()=>({
-           isActive:false,
-           row :[],
-           column :[],
-           name:'Section',
-           styleBtnTool:{
+            isActive : false,
+            row :[],
+            column :[],
+            name:'Section',
+            styleBtnTool:{
                 right: '10px',
                 bottom: '0'
-           }
+           },
         }),
         methods:{
-            
             clickOutsideSection(){
                 this.isActive =false
             },
@@ -64,6 +57,11 @@ const module_status = createNamespacedHelpers('status')
                     margin: this.getStyle.margin,
                     height : this.getStyle.height +'px',
                     position:'relative'
+                }
+            },
+            getThis(){
+                return {
+                   name:this.name,id:this.properties.id,row:null,column: null
                 }
             },
             ...module_status.mapGetters([
@@ -89,6 +87,8 @@ const module_status = createNamespacedHelpers('status')
             this.resetRowColumn()
             this.row = this.properties.attributes.rows
             this.column = this.properties.attributes.columns
+            
+         
         }
         
     }

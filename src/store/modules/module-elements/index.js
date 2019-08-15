@@ -35,7 +35,7 @@ export default {
                         ],
                         columns:[
                             {
-                                rowIndex : 1,
+                                indexRow : 1,
                                 indexColumn: 1,
                                 sizeColumn : 50,
                                 bgColumn: 'none',
@@ -43,7 +43,7 @@ export default {
                                 bgSize: 'auto'
                             },
                             {
-                                rowIndex : 1,
+                                indexRow : 1,
                                 indexColumn: 2,
                                 sizeColumn : 50,
                                 bgColumn: 'none',
@@ -62,7 +62,7 @@ export default {
         }
      },
     mutations: { 
-        addItem(state,{type}){
+        addItem(state,{type,getters}){
             // add undo here
             switch (type) {
                 case 'section_classic':
@@ -83,7 +83,25 @@ export default {
                         state.body.grids.push(item)
                     }
                     break;
-            
+                case 'paragraph':
+                {
+                    var ObjectText = new Class.TextParagraph()
+                    var item = {
+                        type : "paragraph",
+                        id : state.indexItem,
+                        column : getters.getColumnSelected,
+                        row: getters.getRowSelected,
+                        section : getters.getSectionSelected,
+                        attributes:{
+                            setting: ObjectText.setting,
+                            style : ObjectText.style,
+                            position: ObjectText.position
+                        }
+                    }
+                    state.indexItem++
+                    state.body.elements.push(item)
+                }
+                break;
                 default:
                     break;
             }
@@ -92,7 +110,7 @@ export default {
     actions: { 
         addItemAction(context,{type}){
             setTimeout(()=>{
-                context.commit('addItem',{type})
+                context.commit('addItem',{type,getters:context.getters})
             },100)
             clearTimeout()
         }
@@ -106,6 +124,15 @@ export default {
         },
         getElementsById(state,{id}){
             return state.body.elements.filter(item => item.id == id)
+        },
+        getSectionSelected(state, getters, rootState, rootGetters){
+            return rootGetters['status/getSectionIdSelected']
+        },
+        getRowSelected(state, getters, rootState, rootGetters){
+            return rootGetters['status/getRowIndexSelected']
+        },
+        getColumnSelected(state, getters, rootState, rootGetters){
+            return rootGetters['status/getColumnIndexSelected']
         }
      }
 }

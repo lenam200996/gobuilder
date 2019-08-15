@@ -192,9 +192,12 @@ class TextParagraph{
             w:90,
             h:24
         };
-        this.value = "this is a text";
-        this.link = '';
-        this.heading = 'p';/** p, span, h1, h2, h3 ,h4 ,h5 ,h6  */
+        this.setting={
+            value : "this is a text",
+            link : '',
+            heading : 'p'/** p, span, h1, h2, h3 ,h4 ,h5 ,h6  */
+        }
+       
         
         
     }
@@ -304,7 +307,7 @@ class Section {
         ],
         this.columns=[
             {
-                rowIndex : 1,
+                indexRow : 1,
                 indexColumn: 1,
                 sizeColumn : 100,
                 bgColumn: 'none',
