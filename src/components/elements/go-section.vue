@@ -33,6 +33,7 @@ const module_status = createNamespacedHelpers('status')
                 right: '10px',
                 bottom: '0'
            },
+           type:'section_classic'
         }),
         methods:{
             clickOutsideSection(){
@@ -61,7 +62,7 @@ const module_status = createNamespacedHelpers('status')
             },
             getThis(){
                 return {
-                   name:this.name,id:this.properties.id,row:null,column: null
+                  type:this.type,name:this.name,id:this.properties.id,section:null,row:null,column: null
                 }
             },
             ...module_status.mapGetters([

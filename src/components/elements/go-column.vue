@@ -7,7 +7,10 @@
     }"
     >
         <!-- element-->
-        <go-text v-for="text in getElements.filter(item => item.type=='paragraph' && item.section == properties.section && item.row == properties.column.indexRow && item.column == properties.column.indexColumn)" :key="text.id"></go-text>
+        <go-text v-for="text in getElementText({section :properties.section,row:properties.column.indexRow,column:properties.column.indexColumn})" :key="text.id" :properties="text"></go-text>
+        <go-image v-for="image in getElementImage({section :properties.section,row:properties.column.indexRow,column:properties.column.indexColumn})" :key="image.id" :properties="image"></go-image>
+        <go-button v-for="button in getElementButton({section :properties.section,row:properties.column.indexRow,column:properties.column.indexColumn})" :key="button.id" :properties="button"></go-button>        
+        <go-video-youtube v-for="button in getElementVideoYoutube({section :properties.section,row:properties.column.indexRow,column:properties.column.indexColumn})" :key="button.id" :properties="button"></go-video-youtube>        
         <go-editor-element-tool v-if="isActive" :styleBlock="styleBtnTool" :thisElement="getThis"></go-editor-element-tool>
     </div>
 </template>
@@ -16,7 +19,7 @@ import { createNamespacedHelpers } from 'vuex'
 import {bus} from '../../main.js'
 
 const module_status = createNamespacedHelpers('status')
-const module_grid = createNamespacedHelpers('grid')
+const module_grid = createNamespacedHelpers('element')
     export default {
         props:{
             properties:{
@@ -34,7 +37,8 @@ const module_grid = createNamespacedHelpers('grid')
                 top:'0px',
                 right:'10px',
             },
-            name:'Column'
+            name:'Column',
+            type:'column'
         }),
         methods:{
             clickColumn(){
@@ -65,13 +69,17 @@ const module_grid = createNamespacedHelpers('grid')
             getColumn(){
                 return this.properties.column.indexColumn
             },
-             getThis(){
+            getThis(){
                 return {
-                   name:this.name,id:this.properties.section,row:this.properties.column.indexRow,column: this.properties.column.indexColumn
+                   type:this.type,name:this.name,id:null,section:this.properties.section,row:this.properties.column.indexRow,column: this.properties.column.indexColumn
                 }
             },
             ...module_grid.mapGetters([
-                'getElements'
+                'getElements',
+                'getElementText',
+                'getElementImage',
+                'getElementButton',
+                'getElementVideoYoutube'
             ])
         },
         mounted(){

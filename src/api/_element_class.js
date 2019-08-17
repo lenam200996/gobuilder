@@ -1,7 +1,6 @@
 class Video{
     constructor(){
         this.style = {
-            alignBlock : 'none',
             top: 0,
             left : 0,
             width: '300px',
@@ -12,6 +11,7 @@ class Video{
             url :'https://www.youtube.com/embed/m2gHLijHTQU',
             autoPlay : false,
             loop: false,
+            alignBlock : 'none',
         }
         this.position = {
             x :150,
@@ -177,7 +177,6 @@ class TextParagraph{
             letterSpacing : 0, /** (number) px */
             wordSpacing :0 , /** (number) px */
             lineHeight :12 , /** (number) px */
-            alignBlock : 'none',
             top: '100px',
             left : '148px',
             width: '90px',
@@ -195,7 +194,8 @@ class TextParagraph{
         this.setting={
             value : "this is a text",
             link : '',
-            heading : 'p'/** p, span, h1, h2, h3 ,h4 ,h5 ,h6  */
+            heading : 'p',/** p, span, h1, h2, h3 ,h4 ,h5 ,h6  */
+            alignBlock : 'none',
         }
        
         
@@ -227,7 +227,6 @@ class Button {
             borderRadius :0,
             color: '#000000',
             textTransform : 'none',
-            alignBlock : 'none',
             top: '143px',
             left : '92px',
             width: '200px',
@@ -243,7 +242,10 @@ class Button {
             colorHover:'#ffffff',
             borderColorHover :'green'
         }
-        this.text = 'Simple Button'
+        this.setting={
+            text : 'Simple Button',
+            alignBlock : 'none',
+        }
         
     }
    
@@ -252,7 +254,7 @@ class Button {
 class Image {
     constructor(){
         this.setting = {
-            url : require('../assets/go_logo.png'),
+            url : require('../assets/template.jpg'),
             keepProportion: true,
         }
         this.position = {

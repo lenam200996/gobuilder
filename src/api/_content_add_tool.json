@@ -32,8 +32,8 @@
             "title":"Image",
             "list":[
                 {
-                    "_name":"Image",
-                    "_ref":"image"
+                    "name":"Image",
+                    "ref":"image"
                 }
             ]
         },

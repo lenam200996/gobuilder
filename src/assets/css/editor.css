@@ -514,7 +514,10 @@
     position: relative;
     height: 40px;
 }
-
+.content-setting>ul>li>.referenceRefRadio{
+    position: relative;
+    height: 45px;
+}
 .content-setting>ul>li>.referenceRefRowManager{
     /* height: 150px; */
 }
@@ -574,4 +577,27 @@
 
 .tool-manager>.icon-arrow-next.down{
     transform: rotate(-90deg);
+}
+
+.mce-tinymce.mce-container.mce-panel{
+    position: absolute;
+    width: 450px !important;
+    z-index: 99999;
+}
+
+.saveEditor{
+    position: absolute; top:-25px;left: -15px;
+    background: #EB6641;
+    z-index: 999999;
+    height: 30px;
+    width: 70px;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: "SVN-Gotham";
+    border-radius: 5px;
+    box-shadow: 0px 3px 15px rgba(55, 67, 85, 0.15);
+}
+
+.ivu-select-visible .ivu-select-selection,.ivu-radio-group-button .ivu-radio-wrapper-checked{
+    box-shadow: none !important;
 }

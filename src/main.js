@@ -19,6 +19,7 @@ import VueMaterial from 'vue-material'
 import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
 import VueClosable from 'vue-closable'
+import tinymce from 'vue-tinymce-editor'
 /**
  * import css
  */
@@ -39,6 +40,8 @@ Vue.use(VueClosable)
  * vue register component
  */
 Vue.component('drr', drr)
+Vue.component('editor', tinymce)
+
 /**
  * other config
  */

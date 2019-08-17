@@ -36,7 +36,8 @@ const module_status = createNamespacedHelpers('status')
              styleBtnTool:{
                 right: '50%',
                 bottom: '0'
-             }
+             },
+             type:'row'
         }),
         methods:{
             
@@ -65,7 +66,7 @@ const module_status = createNamespacedHelpers('status')
             ]),
             getThis(){
                 return {
-                    name:this.name,id:this.properties.section,row:this.properties.row.indexRow,column: null
+                    type:this.type,name:this.name,id:null,section:this.properties.section,row:this.properties.row.indexRow,column: null
                 }
             }
         },

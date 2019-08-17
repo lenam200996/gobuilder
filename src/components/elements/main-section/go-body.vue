@@ -7,7 +7,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 
-const module_grids = createNamespacedHelpers('grid')
+const module_grids = createNamespacedHelpers('element')
     export default {
         data:()=>({
             style :{

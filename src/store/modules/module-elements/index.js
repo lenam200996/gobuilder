@@ -1,4 +1,5 @@
 import Class from '../../../api/_element_class'
+import {bus} from '../../../main'
 export default {
     namespaced:true,
     state: { 
@@ -7,7 +8,7 @@ export default {
         body:{
             grids:[
                 {
-                    type: 'section',
+                    type: 'section_classic',
                     id: 1,
                     indexSection : 1,
                     attributes :{
@@ -63,6 +64,7 @@ export default {
      },
     mutations: { 
         addItem(state,{type,getters}){
+            bus.$emit('closeContent',true)
             // add undo here
             switch (type) {
                 case 'section_classic':
@@ -102,6 +104,60 @@ export default {
                     state.body.elements.push(item)
                 }
                 break;
+                case 'image':{
+                    var ObjectImage = new Class.Image()
+                    var item = {
+                        type: 'image',
+                        id : state.indexItem,
+                        column : getters.getColumnSelected,
+                        row : getters.getRowSelected,
+                        section : getters.getSectionSelected,
+                        attributes:{
+                            setting : ObjectImage.setting,
+                            style :ObjectImage.style,
+                            position : ObjectImage.position
+                        }
+                    }
+                    state.indexItem++
+                    state.body.elements.push(item)
+                }
+                break;
+                case 'button_classic':{
+                    var ObjectButton = new Class.Button()
+                    var item  = {
+                        type: 'button',
+                        id : state.indexItem,
+                        column : getters.getColumnSelected,
+                        row : getters.getRowSelected,
+                        section : getters.getSectionSelected,
+                        attributes:{
+                            setting : ObjectButton.setting,
+                            style :ObjectButton.style,
+                            position : ObjectButton.position
+                        }
+                    }
+                        state.indexItem++
+                        state.body.elements.push(item)
+                }
+                break;
+                case 'video_youtube':{
+                    var ObjectVideo = new Class.Video()
+                    var item = {
+                        type : 'video_youtube',
+                        id : state.indexItem,
+                        column : getters.getColumnSelected,
+                        row : getters.getRowSelected,
+                        section : getters.getSectionSelected,
+                        attributes:{
+                            setting : ObjectVideo.setting,
+                            style :ObjectVideo.style,
+                            position : ObjectVideo.position
+                        }
+                    }
+                    state.indexItem++
+                    state.body.elements.push(item)
+                }
+                break;
                 default:
                     break;
             }
@@ -133,6 +189,39 @@ export default {
         },
         getColumnSelected(state, getters, rootState, rootGetters){
             return rootGetters['status/getColumnIndexSelected']
+        },
+        getElementText:(state)=>({section,row,column})=>{
+            if(state.body.elements.length === 0) return []
+            return state.body.elements.filter(item => item.type=='paragraph' &&item.section ===section && item.row ===row&&item.column===column)
+        },
+        getElementImage:(state)=>({section,row,column})=>{
+            if(state.body.elements.length === 0) return []
+            return state.body.elements.filter(item => item.type =='image'&& item.section === section && item.row === row && item.column === column )
+        },
+        getElementButton:(state)=>({section,row,column})=>{
+            if(state.body.elements.length === 0) return []
+            return state.body.elements.filter(item => item.type =='button'&& item.section === section && item.row === row && item.column === column )
+        },
+        getElementVideoYoutube:(state)=>({section,row,column})=>{
+            if(state.body.elements.length === 0) return []
+            return state.body.elements.filter(item => item.type =='video_youtube'&& item.section === section && item.row === row && item.column === column )
+        },
+        getDataModelElement:(state)=>({type,id})=>{
+            var grid = ['section_classic','row','column']
+            var model
+            if(grid.includes(type)){
+                model = {
+                    setting : state.body.grids.find(item => item.type == type && item.id === id).attributes.setting,
+                    style : state.body.grids.find(item => item.type == type && item.id === id).attributes.style
+                }
+            }else{
+                model= {
+                    setting : state.body.elements.find(item => item.type == type && item.id === id).attributes.setting,
+                    style : state.body.elements.find(item => item.type == type && item.id === id).attributes.style
+                }
+
+            }
+            return model
         }
      }
 }

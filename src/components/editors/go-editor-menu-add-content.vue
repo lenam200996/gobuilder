@@ -22,7 +22,7 @@ import content from '../../api/_content_add_tool.json'
 import {bus} from '../../main.js'
 import { createNamespacedHelpers } from 'vuex'
 
-const moduleGrid = createNamespacedHelpers('grid')
+const moduleGrid = createNamespacedHelpers('element')
 // const moduleB = createNamespacedHelpers('b')
     export default {
         props:{
